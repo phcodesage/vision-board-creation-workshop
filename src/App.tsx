@@ -32,13 +32,13 @@ function App() {
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
               <div className="text-left">
-                <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
+                <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
                   Vision Board Creation Workshop
                 </h1>
-                <p className="text-3xl md:text-4xl text-[#f7e0e0] mb-8 font-light">
+                <p className="text-2xl md:text-4xl text-[#f7e0e0] mb-8 font-light">
                   Dream it. See it. Create it.
                 </p>
-                <p className="text-xl md:text-2xl mb-12 text-gray-200 leading-relaxed">
+                <p className="text-lg md:text-2xl mb-12 text-gray-200 leading-relaxed">
                   Join us to craft your vision board and map out your goals with clarity.
                   Transform your dreams into a visual masterpiece that inspires action.
                 </p>
@@ -97,7 +97,7 @@ function App() {
       <section className="py-20 bg-[#f7e0e0]">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-5xl md:text-6xl font-bold text-[#0e1f3e] text-center mb-12">
+            <h2 className="text-4xl md:text-6xl font-bold text-[#0e1f3e] text-center mb-12">
               What to Expect
             </h2>
             <p className="text-xl text-[#0e1f3e]/80 text-center mb-16 max-w-4xl mx-auto leading-relaxed">
@@ -151,7 +151,7 @@ function App() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-5xl md:text-6xl font-bold text-[#0e1f3e] text-center mb-20">
+            <h2 className="text-4xl md:text-6xl font-bold text-[#0e1f3e] text-center mb-20">
               Event Details
             </h2>
 
@@ -246,7 +246,7 @@ function App() {
       <section className="py-20 bg-[#0e1f3e] text-white">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-5xl md:text-6xl font-bold text-center mb-16">
+            <h2 className="text-3xl md:text-6xl font-bold text-center mb-16">
               What to Bring & What You'll Get
             </h2>
 
@@ -313,93 +313,11 @@ function App() {
         </div>
       </section>
 
-      <section className="py-20 bg-[#f7e0e0]">
-        <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-5xl md:text-6xl font-bold text-[#0e1f3e] text-center mb-6">
-              What People Are Saying
-            </h2>
-            <p className="text-center text-[#0e1f3e]/70 mb-20 text-xl">Real stories from past participants</p>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-2xl p-10 shadow-lg hover:shadow-xl transition-all">
-                <div className="flex items-center mb-6">
-                  <div className="flex space-x-1 text-[#ca3433]">
-                    {[...Array(5)].map((_, i) => (
-                      <Heart key={i} className="w-6 h-6 fill-current" />
-                    ))}
-                  </div>
-                </div>
-                <p className="text-[#0e1f3e]/80 mb-8 leading-relaxed text-lg">
-                  "This workshop changed my life. Seeing my goals every day on my vision board kept me focused
-                  and motivated. Six months later, I've achieved things I only dreamed about!"
-                </p>
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-[#ca3433] rounded-full flex items-center justify-center text-white font-bold">
-                    SM
-                  </div>
-                  <div>
-                    <p className="font-bold text-[#0e1f3e]">Sarah Mitchell</p>
-                    <p className="text-sm text-[#0e1f3e]/60">Entrepreneur</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-2xl p-10 shadow-lg hover:shadow-xl transition-all">
-                <div className="flex items-center mb-6">
-                  <div className="flex space-x-1 text-[#ca3433]">
-                    {[...Array(5)].map((_, i) => (
-                      <Heart key={i} className="w-6 h-6 fill-current" />
-                    ))}
-                  </div>
-                </div>
-                <p className="text-[#0e1f3e]/80 mb-8 leading-relaxed text-lg">
-                  "I was skeptical at first, but the guided process helped me clarify what I really want.
-                  The community was so supportive, and my vision board is now my daily inspiration."
-                </p>
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-[#ca3433] rounded-full flex items-center justify-center text-white font-bold">
-                    JL
-                  </div>
-                  <div>
-                    <p className="font-bold text-[#0e1f3e]">James Liu</p>
-                    <p className="text-sm text-[#0e1f3e]/60">Teacher</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-2xl p-10 shadow-lg hover:shadow-xl transition-all">
-                <div className="flex items-center mb-6">
-                  <div className="flex space-x-1 text-[#ca3433]">
-                    {[...Array(5)].map((_, i) => (
-                      <Heart key={i} className="w-6 h-6 fill-current" />
-                    ))}
-                  </div>
-                </div>
-                <p className="text-[#0e1f3e]/80 mb-8 leading-relaxed text-lg">
-                  "The perfect blend of creativity and intention-setting. I left feeling energized and clear
-                  about my path forward. Highly recommend to anyone feeling stuck or seeking direction!"
-                </p>
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-[#ca3433] rounded-full flex items-center justify-center text-white font-bold">
-                    MP
-                  </div>
-                  <div>
-                    <p className="font-bold text-[#0e1f3e]">Maria Patel</p>
-                    <p className="text-sm text-[#0e1f3e]/60">Designer</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section id="registration" className="py-20 bg-gradient-to-br from-[#0e1f3e] to-[#ca3433] text-white">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
             <Sparkles className="w-20 h-20 mx-auto mb-8 text-[#f7e0e0]" />
-            <h2 className="text-5xl md:text-6xl font-bold mb-8">
+            <h2 className="text-4xl md:text-6xl font-bold mb-8">
               Ready to Create Your Vision?
             </h2>
             <p className="text-2xl mb-12 text-gray-200 leading-relaxed">
@@ -430,7 +348,7 @@ function App() {
                 </div>
                 <div className="mt-8 p-6 bg-white/10 rounded-xl">
                   <p className="text-lg">
-                    <strong>Investment:</strong> $75 per person (includes all materials and refreshments)
+                    <strong>Investment:</strong> $129 for a 3 hour experience. Including all material, Champagne and refreshments
                   </p>
                   <p className="text-lg mt-3">
                     <strong>Early Bird Special:</strong> Register by December 20th and save $15!
@@ -440,7 +358,6 @@ function App() {
             </div>
 
             <button
-              onClick={() => window.location.href = 'mailto:Info@ExceedLearningCenterny.com?subject=Vision Board Workshop Registration'}
               className="bg-[#ca3433] hover:bg-[#a82928] text-white px-14 py-5 rounded-full text-xl font-semibold transition-all duration-300 hover:scale-105 shadow-2xl"
             >
               Register Now
@@ -456,7 +373,7 @@ function App() {
       <footer className="bg-[#0e1f3e] text-white py-12">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-8 mb-8">
+            <div className="grid md:grid-cols-2 gap-12 mb-8 items-center">
               <div>
                 <div className="flex items-center space-x-2 mb-4">
                   <img src="https://lirp.cdn-website.com/3bba8822/dms3rep/multi/opt/Exceed-learning-center-1920w.png" alt="Exceed Learning Center" className="h-10 w-auto" />
@@ -485,15 +402,7 @@ function App() {
                 </div>
               </div>
 
-              <div>
-                <h4 className="font-bold mb-6 text-[#f7e0e0] text-lg">Quick Links</h4>
-                <div className="space-y-3 text-base text-gray-400">
-                  <p><a href="#" className="hover:text-white">About Us</a></p>
-                  <p><a href="#" className="hover:text-white">Past Workshops</a></p>
-                  <p><a href="#" className="hover:text-white">FAQ</a></p>
-                  <p><a href="#" className="hover:text-white">Privacy Policy</a></p>
-                </div>
-              </div>
+
             </div>
 
             <div className="border-t border-white/10 pt-8 text-center text-sm text-gray-400">
