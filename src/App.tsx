@@ -1,9 +1,36 @@
+import { useEffect } from 'react';
 import { Calendar, Clock, Heart, Lightbulb, Users, Sparkles, Mail, Phone, MapPin } from 'lucide-react';
+import Lenis from 'lenis';
 import heroImage from './assets/hero-img.jpg';
 
 function App() {
+  const STRIPE_PAYMENT_URL = 'https://buy.stripe.com/4gM28k8GgbAm8O51ObdfG0a';
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      smoothWheel: true,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
   const scrollToRegistration = () => {
     document.getElementById('registration')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleRegister = () => {
+    window.open(STRIPE_PAYMENT_URL, '_blank');
   };
 
   return (
@@ -157,74 +184,44 @@ function App() {
 
             <div className="space-y-8 mb-20">
               <div className="bg-[#f7e0e0] rounded-2xl p-10 hover:shadow-lg transition-all">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                  <div className="flex-1 mb-6 md:mb-0">
-                    <h3 className="text-3xl font-bold text-[#0e1f3e] mb-3">Session 1</h3>
-                    <div className="flex items-center space-x-6 text-[#0e1f3e]/80 text-xl">
-                      <div className="flex items-center space-x-3">
-                        <Calendar className="w-6 h-6 text-[#ca3433]" />
-                        <span className="font-semibold">January 2, 2025</span>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <Clock className="w-6 h-6 text-[#ca3433]" />
-                        <span>1:00-4:00 PM</span>
-                      </div>
-                    </div>
+                <h3 className="text-3xl font-bold text-[#0e1f3e] mb-3">Session 1</h3>
+                <div className="flex items-center space-x-6 text-[#0e1f3e]/80 text-xl">
+                  <div className="flex items-center space-x-3">
+                    <Calendar className="w-6 h-6 text-[#ca3433]" />
+                    <span className="font-semibold">January 2, 2025</span>
                   </div>
-                  <button
-                    onClick={scrollToRegistration}
-                    className="bg-[#ca3433] hover:bg-[#a82928] text-white px-10 py-4 rounded-full font-semibold transition-all hover:scale-105 text-lg"
-                  >
-                    Reserve Spot
-                  </button>
+                  <div className="flex items-center space-x-3">
+                    <Clock className="w-6 h-6 text-[#ca3433]" />
+                    <span>1:00-4:00 PM</span>
+                  </div>
                 </div>
               </div>
 
               <div className="bg-[#f7e0e0] rounded-2xl p-10 hover:shadow-lg transition-all">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                  <div className="flex-1 mb-6 md:mb-0">
-                    <h3 className="text-3xl font-bold text-[#0e1f3e] mb-3">Session 2</h3>
-                    <div className="flex items-center space-x-6 text-[#0e1f3e]/80 text-xl">
-                      <div className="flex items-center space-x-3">
-                        <Calendar className="w-6 h-6 text-[#ca3433]" />
-                        <span className="font-semibold">January 4, 2025</span>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <Clock className="w-6 h-6 text-[#ca3433]" />
-                        <span>1:00-3:00 PM</span>
-                      </div>
-                    </div>
+                <h3 className="text-3xl font-bold text-[#0e1f3e] mb-3">Session 2</h3>
+                <div className="flex items-center space-x-6 text-[#0e1f3e]/80 text-xl">
+                  <div className="flex items-center space-x-3">
+                    <Calendar className="w-6 h-6 text-[#ca3433]" />
+                    <span className="font-semibold">January 4, 2025</span>
                   </div>
-                  <button
-                    onClick={scrollToRegistration}
-                    className="bg-[#ca3433] hover:bg-[#a82928] text-white px-10 py-4 rounded-full font-semibold transition-all hover:scale-105 text-lg"
-                  >
-                    Reserve Spot
-                  </button>
+                  <div className="flex items-center space-x-3">
+                    <Clock className="w-6 h-6 text-[#ca3433]" />
+                    <span>1:00-3:00 PM</span>
+                  </div>
                 </div>
               </div>
 
               <div className="bg-[#f7e0e0] rounded-2xl p-10 hover:shadow-lg transition-all">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                  <div className="flex-1 mb-6 md:mb-0">
-                    <h3 className="text-3xl font-bold text-[#0e1f3e] mb-3">Session 3</h3>
-                    <div className="flex items-center space-x-6 text-[#0e1f3e]/80 text-xl">
-                      <div className="flex items-center space-x-3">
-                        <Calendar className="w-6 h-6 text-[#ca3433]" />
-                        <span className="font-semibold">January 8, 2025</span>
-                      </div>
-                      <div className="flex items-center space-x-3">
-                        <Clock className="w-6 h-6 text-[#ca3433]" />
-                        <span>6:00-9:00 PM</span>
-                      </div>
-                    </div>
+                <h3 className="text-3xl font-bold text-[#0e1f3e] mb-3">Session 3</h3>
+                <div className="flex items-center space-x-6 text-[#0e1f3e]/80 text-xl">
+                  <div className="flex items-center space-x-3">
+                    <Calendar className="w-6 h-6 text-[#ca3433]" />
+                    <span className="font-semibold">January 8, 2025</span>
                   </div>
-                  <button
-                    onClick={scrollToRegistration}
-                    className="bg-[#ca3433] hover:bg-[#a82928] text-white px-10 py-4 rounded-full font-semibold transition-all hover:scale-105 text-lg"
-                  >
-                    Reserve Spot
-                  </button>
+                  <div className="flex items-center space-x-3">
+                    <Clock className="w-6 h-6 text-[#ca3433]" />
+                    <span>6:00-9:00 PM</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -358,9 +355,10 @@ function App() {
             </div>
 
             <button
+              onClick={handleRegister}
               className="bg-[#ca3433] hover:bg-[#a82928] text-white px-14 py-5 rounded-full text-xl font-semibold transition-all duration-300 hover:scale-105 shadow-2xl"
             >
-              Register Now
+              Register Now – $129
             </button>
 
             <p className="mt-8 text-base text-gray-300">
