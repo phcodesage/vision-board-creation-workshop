@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Calendar, Clock, Heart, Lightbulb, Users, Sparkles, Mail, Phone, MapPin } from 'lucide-react';
 import Lenis from 'lenis';
+import exceedLogo from './assets/exceed-logo.png';
 import heroImage from './assets/hero-img.jpg';
 
 function App() {
@@ -44,7 +45,7 @@ function App() {
         <nav className="relative container mx-auto px-6 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <img src="https://lirp.cdn-website.com/3bba8822/dms3rep/multi/opt/Exceed-learning-center-1920w.png" alt="Exceed Learning Center" className="h-14 w-auto" />
+              <img src={exceedLogo} alt="Exceed Learning Center" className="h-14 w-auto" />
             </div>
             <button
               onClick={scrollToRegistration}
@@ -92,7 +93,7 @@ function App() {
                 <div className="grid md:grid-cols-3 gap-6">
                   <div className="bg-white/10 rounded-xl p-8 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all text-center">
                     <Calendar className="w-10 h-10 mb-4 mx-auto text-[#f7e0e0]" />
-                    <p className="font-bold text-xl mb-3">January 2</p>
+                    <p className="font-bold text-xl mb-3">COMING SOON</p>
                     <div className="flex items-center justify-center space-x-2 text-base">
                       <Clock className="w-5 h-5" />
                       <span>1:00-4:00 PM</span>
@@ -100,7 +101,7 @@ function App() {
                   </div>
                   <div className="bg-white/10 rounded-xl p-8 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all text-center">
                     <Calendar className="w-10 h-10 mb-4 mx-auto text-[#f7e0e0]" />
-                    <p className="font-bold text-xl mb-3">January 4</p>
+                    <p className="font-bold text-xl mb-3">COMING SOON</p>
                     <div className="flex items-center justify-center space-x-2 text-base">
                       <Clock className="w-5 h-5" />
                       <span>12:00-3:00 PM</span>
@@ -108,7 +109,7 @@ function App() {
                   </div>
                   <div className="bg-white/10 rounded-xl p-8 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all text-center">
                     <Calendar className="w-10 h-10 mb-4 mx-auto text-[#f7e0e0]" />
-                    <p className="font-bold text-xl mb-3">January 8</p>
+                    <p className="font-bold text-xl mb-3">COMING SOON</p>
                     <div className="flex items-center justify-center space-x-2 text-base">
                       <Clock className="w-5 h-5" />
                       <span>6:00-9:00 PM</span>
@@ -188,7 +189,7 @@ function App() {
                 <div className="flex items-center space-x-6 text-[#0e1f3e]/80 text-xl">
                   <div className="flex items-center space-x-3">
                     <Calendar className="w-6 h-6 text-[#ca3433]" />
-                    <span className="font-semibold">January 2, 2025</span>
+                    <span className="font-semibold">COMING SOON</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Clock className="w-6 h-6 text-[#ca3433]" />
@@ -202,7 +203,7 @@ function App() {
                 <div className="flex items-center space-x-6 text-[#0e1f3e]/80 text-xl">
                   <div className="flex items-center space-x-3">
                     <Calendar className="w-6 h-6 text-[#ca3433]" />
-                    <span className="font-semibold">January 4, 2025</span>
+                    <span className="font-semibold">COMING SOON</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Clock className="w-6 h-6 text-[#ca3433]" />
@@ -216,7 +217,7 @@ function App() {
                 <div className="flex items-center space-x-6 text-[#0e1f3e]/80 text-xl">
                   <div className="flex items-center space-x-3">
                     <Calendar className="w-6 h-6 text-[#ca3433]" />
-                    <span className="font-semibold">January 8, 2025</span>
+                    <span className="font-semibold">COMING SOON</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Clock className="w-6 h-6 text-[#ca3433]" />
@@ -348,7 +349,8 @@ function App() {
                     <strong>Investment:</strong> $129 for a 3 hour experience. Including all material, Champagne and refreshments
                   </p>
                   <p className="text-lg mt-3">
-                    <strong>Early Bird Special:</strong> Register by December 20th and save $15!
+                    {/* <strong>Early Bird Special:</strong> Register by December 20th and save $15! */}
+                    Coming soon
                   </p>
                 </div>
               </div>
@@ -374,7 +376,7 @@ function App() {
             <div className="grid md:grid-cols-2 gap-12 mb-8 items-center">
               <div>
                 <div className="flex items-center space-x-2 mb-4">
-                  <img src="https://lirp.cdn-website.com/3bba8822/dms3rep/multi/opt/Exceed-learning-center-1920w.png" alt="Exceed Learning Center" className="h-10 w-auto" />
+                  <img src={exceedLogo} alt="Exceed Learning Center" className="h-10 w-auto" />
                 </div>
                 <p className="text-gray-400 text-base leading-relaxed">
                   Empowering individuals to visualize and achieve their dreams through creative expression
