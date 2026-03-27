@@ -93,26 +93,26 @@ function App() {
                 <div className="grid md:grid-cols-3 gap-6">
                   <div className="bg-white/10 rounded-xl p-8 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all text-center">
                     <Calendar className="w-10 h-10 mb-4 mx-auto text-[#f7e0e0]" />
-                    <p className="font-bold text-xl mb-3">COMING SOON</p>
+                    <p className="font-bold text-xl mb-3">June 7</p>
                     <div className="flex items-center justify-center space-x-2 text-base">
                       <Clock className="w-5 h-5" />
-                      <span>1:00-4:00 PM</span>
+                      <span>4:00–7:00 PM</span>
                     </div>
                   </div>
                   <div className="bg-white/10 rounded-xl p-8 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all text-center">
                     <Calendar className="w-10 h-10 mb-4 mx-auto text-[#f7e0e0]" />
-                    <p className="font-bold text-xl mb-3">COMING SOON</p>
+                    <p className="font-bold text-xl mb-3">June 14</p>
                     <div className="flex items-center justify-center space-x-2 text-base">
                       <Clock className="w-5 h-5" />
-                      <span>12:00-3:00 PM</span>
+                      <span>4:00–7:00 PM</span>
                     </div>
                   </div>
                   <div className="bg-white/10 rounded-xl p-8 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all text-center">
                     <Calendar className="w-10 h-10 mb-4 mx-auto text-[#f7e0e0]" />
-                    <p className="font-bold text-xl mb-3">COMING SOON</p>
+                    <p className="font-bold text-xl mb-3">June 21</p>
                     <div className="flex items-center justify-center space-x-2 text-base">
                       <Clock className="w-5 h-5" />
-                      <span>6:00-9:00 PM</span>
+                      <span>4:00–7:00 PM</span>
                     </div>
                   </div>
                 </div>
@@ -189,11 +189,11 @@ function App() {
                 <div className="flex items-center space-x-6 text-[#0e1f3e]/80 text-xl">
                   <div className="flex items-center space-x-3">
                     <Calendar className="w-6 h-6 text-[#ca3433]" />
-                    <span className="font-semibold">COMING SOON</span>
+                    <span className="font-semibold">June 7</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Clock className="w-6 h-6 text-[#ca3433]" />
-                    <span>1:00-4:00 PM</span>
+                    <span>4:00–7:00 PM</span>
                   </div>
                 </div>
               </div>
@@ -203,11 +203,11 @@ function App() {
                 <div className="flex items-center space-x-6 text-[#0e1f3e]/80 text-xl">
                   <div className="flex items-center space-x-3">
                     <Calendar className="w-6 h-6 text-[#ca3433]" />
-                    <span className="font-semibold">COMING SOON</span>
+                    <span className="font-semibold">June 14</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Clock className="w-6 h-6 text-[#ca3433]" />
-                    <span>1:00-3:00 PM</span>
+                    <span>4:00–7:00 PM</span>
                   </div>
                 </div>
               </div>
@@ -217,11 +217,11 @@ function App() {
                 <div className="flex items-center space-x-6 text-[#0e1f3e]/80 text-xl">
                   <div className="flex items-center space-x-3">
                     <Calendar className="w-6 h-6 text-[#ca3433]" />
-                    <span className="font-semibold">COMING SOON</span>
+                    <span className="font-semibold">June 21</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Clock className="w-6 h-6 text-[#ca3433]" />
-                    <span>6:00-9:00 PM</span>
+                    <span>4:00–7:00 PM</span>
                   </div>
                 </div>
               </div>
