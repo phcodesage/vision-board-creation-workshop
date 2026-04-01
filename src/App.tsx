@@ -1,11 +1,20 @@
-import { useEffect } from 'react';
-import { Calendar, Clock, Heart, Lightbulb, Users, Sparkles, Mail, Phone, MapPin } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Calendar, Clock, Heart, Lightbulb, Users, Sparkles, Mail, Phone, MapPin, ArrowUp } from 'lucide-react';
 import Lenis from 'lenis';
 import exceedLogo from './assets/exceed-logo.png';
 import heroImage from './assets/hero-img.jpg';
 
 function App() {
   const STRIPE_PAYMENT_URL = 'https://buy.stripe.com/4gM28k8GgbAm8O51ObdfG0a';
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 100);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -28,6 +37,10 @@ function App() {
 
   const scrollToRegistration = () => {
     document.getElementById('registration')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleRegister = () => {
@@ -66,16 +79,22 @@ function App() {
                 <p className="text-2xl md:text-4xl text-[#f7e0e0] mb-8 font-light">
                   Dream it. See it. Create it.
                 </p>
-                <p className="text-lg md:text-2xl mb-12 text-gray-200 leading-relaxed">
+                <p className="text-lg md:text-2xl mb-8 text-gray-200 leading-relaxed">
                   Join us to craft your vision board and map out your goals with clarity.
                   Transform your dreams into a visual masterpiece that inspires action.
                 </p>
-                <button
-                  onClick={scrollToRegistration}
-                  className="bg-[#ca3433] hover:bg-[#a82928] text-white px-12 py-5 rounded-full text-xl font-semibold transition-all duration-300 hover:scale-105 shadow-2xl"
-                >
-                  Register Now
-                </button>
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-2">
+                  <button
+                    onClick={scrollToRegistration}
+                    className="bg-[#ca3433] hover:bg-[#a82928] text-white px-12 py-5 rounded-full text-xl font-semibold transition-all duration-300 hover:scale-105 shadow-2xl"
+                  >
+                    Register Now – $129
+                  </button>
+                  <div className="bg-white/10 backdrop-blur-sm rounded-xl px-6 py-3 border border-white/20">
+                    <span className="text-[#f7e0e0] font-bold text-2xl">$129</span>
+                    <span className="text-gray-300 text-sm block">All materials included</span>
+                  </div>
+                </div>
               </div>
               <div className="relative">
                 <div className="absolute -inset-4 bg-gradient-to-r from-[#ca3433] to-[#f7e0e0] rounded-2xl blur-lg opacity-30"></div>
@@ -412,6 +431,17 @@ function App() {
           </div>
         </div>
       </footer>
+
+      {/* Scroll to Top Button */}
+      <button
+        onClick={scrollToTop}
+        className={`fixed bottom-6 right-6 w-10 h-10 bg-[#ca3433] hover:bg-[#a82928] text-white rounded-full shadow-lg transition-all duration-300 flex items-center justify-center z-50 ${
+          showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+        }`}
+        aria-label="Scroll to top"
+      >
+        <ArrowUp className="w-5 h-5" />
+      </button>
     </div>
   );
 }
