@@ -349,8 +349,8 @@ function App() {
                   <Mail className="w-8 h-8 text-[#f7e0e0] flex-shrink-0 mt-1" />
                   <div>
                     <p className="font-semibold mb-2 text-xl">Email</p>
-                    <a href="mailto:Info@ExceedLearningCenterny.com" className="text-[#f7e0e0] hover:underline text-lg">
-                      Info@ExceedLearningCenterny.com
+                    <a href="mailto:info@exceedlearningcenterny.com" className="text-[#f7e0e0] hover:underline text-lg">
+                      info@exceedlearningcenterny.com
                     </a>
                   </div>
                 </div>
@@ -408,8 +408,8 @@ function App() {
                 <div className="space-y-3 text-base text-gray-400">
                   <p className="flex items-center space-x-3">
                     <Mail className="w-5 h-5" />
-                    <a href="mailto:Info@ExceedLearningCenterny.com" className="hover:text-white">
-                      Info@ExceedLearningCenterny.com
+                    <a href="mailto:info@exceedlearningcenterny.com" className="hover:text-white">
+                      info@exceedlearningcenterny.com
                     </a>
                   </p>
                   <p className="flex items-center space-x-3">
