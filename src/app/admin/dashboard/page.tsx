@@ -41,7 +41,7 @@ export default async function AdminDashboard({
           <h1 className="text-2xl font-black text-red-700 mb-4">Database Configuration Missing</h1>
           <p className="text-red-600 font-medium mb-6">
             The <code>MONGODB_URI</code> environment variable is not set in Vercel. 
-            Please add it to your Project Settings > Environment Variables.
+            Please add it to your Project Settings &gt; Environment Variables.
           </p>
           <form action={logout}>
             <button className="bg-red-600 text-white px-8 py-3 rounded-2xl font-bold hover:bg-red-700 transition-all">
