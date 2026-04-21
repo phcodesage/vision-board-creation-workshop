@@ -34,7 +34,39 @@ export default async function AdminDashboard({
   const session = cookies().get('admin_session');
   if (!session) redirect('/admin/login');
 
-  await connectDB();
+  if (!process.env.MONGODB_URI) {
+    return (
+      <div className="min-h-screen bg-[#f8fafc] flex items-center justify-center p-10">
+        <div className="bg-red-50 border border-red-200 p-8 rounded-3xl text-center max-w-lg">
+          <h1 className="text-2xl font-black text-red-700 mb-4">Database Configuration Missing</h1>
+          <p className="text-red-600 font-medium mb-6">
+            The <code>MONGODB_URI</code> environment variable is not set in Vercel. 
+            Please add it to your Project Settings > Environment Variables.
+          </p>
+          <form action={logout}>
+            <button className="bg-red-600 text-white px-8 py-3 rounded-2xl font-bold hover:bg-red-700 transition-all">
+              Sign Out and Check Settings
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
+  try {
+    await connectDB();
+  } catch (err) {
+    return (
+      <div className="min-h-screen bg-[#f8fafc] flex items-center justify-center p-10">
+        <div className="bg-red-50 border border-red-200 p-8 rounded-3xl text-center max-w-lg">
+          <h1 className="text-2xl font-black text-red-700 mb-4">Database Connection Error</h1>
+          <p className="text-red-600 font-medium mb-6">
+            Could not connect to MongoDB. Please check if your connection string is valid and your IP is whitelisted on MongoDB Atlas.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   // Fetch registrations from MongoDB
   const rawRegistrations = await Registration.find({}).sort({ createdAt: -1 }).lean();
