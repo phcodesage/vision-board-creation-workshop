@@ -21,3 +21,11 @@ dist-ssr
 *.sln
 *.sw?
 .env
+.env*.local
+
+# next.js
+.next/
+out/
+
+# production
+build/
