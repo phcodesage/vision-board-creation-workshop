@@ -107,7 +107,15 @@ export default function PaymentsTable({ initialPayments }: { initialPayments: Pa
               </tr>
             )}
             {payments.map((payment) => (
-              <tr key={payment._id} className="hover:bg-gray-50/80 transition-colors group">
+              <tr
+                key={payment._id}
+                className="hover:bg-gray-50/80 transition-colors group cursor-pointer"
+                onClick={(e) => {
+                  // Prevent clicks on action buttons from triggering the modal
+                  if ((e.target as HTMLElement).closest('button')) return;
+                  if (payment.screenshotUrl) setSelectedImage(payment.screenshotUrl);
+                }}
+              >
                 <td className="px-8 py-6">
                   <div className="flex items-center gap-4">
                     <div className={`w-12 h-12 rounded-xl flex items-center justify-center font-black text-lg transition-all capitalize shadow-sm ${
@@ -131,7 +139,7 @@ export default function PaymentsTable({ initialPayments }: { initialPayments: Pa
                     {payment.screenshotUrl ? (
                       <div 
                         className="relative w-16 h-16 rounded-xl overflow-hidden cursor-pointer group/img border border-gray-100 shadow-sm"
-                        onClick={() => setSelectedImage(payment.screenshotUrl)}
+                        onClick={(e) => { e.stopPropagation(); setSelectedImage(payment.screenshotUrl); }}
                       >
                         <img 
                           src={payment.screenshotUrl} 
@@ -223,12 +231,18 @@ export default function PaymentsTable({ initialPayments }: { initialPayments: Pa
           </div>
         )}
         {payments.map((payment) => (
-          <div key={payment._id} className="p-6 hover:bg-gray-50/80 transition-colors relative">
+          <div
+            key={payment._id}
+            className="p-6 hover:bg-gray-50/80 transition-colors relative cursor-pointer"
+            onClick={() => {
+              if (payment.screenshotUrl) setSelectedImage(payment.screenshotUrl);
+            }}
+          >
             <div className="flex items-start gap-4 mb-4">
               {payment.screenshotUrl ? (
                 <div 
                   className="relative w-16 h-16 rounded-xl overflow-hidden cursor-pointer flex-shrink-0 border border-gray-100 shadow-sm group/img"
-                  onClick={() => setSelectedImage(payment.screenshotUrl)}
+                  onClick={(e) => { e.stopPropagation(); setSelectedImage(payment.screenshotUrl); }}
                 >
                   <img src={payment.screenshotUrl} alt="Screenshot" className="w-full h-full object-cover transition-transform group-hover/img:scale-110" />
                   <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover/img:opacity-100 transition-opacity">
@@ -282,7 +296,7 @@ export default function PaymentsTable({ initialPayments }: { initialPayments: Pa
                 <>
                   <button
                     disabled={!!updatingId}
-                    onClick={() => handleStatusUpdate(payment._id, 'verified')}
+                    onClick={(e) => { e.stopPropagation(); handleStatusUpdate(payment._id, 'verified'); }}
                     className="flex-1 flex items-center justify-center gap-2 p-3 bg-green-50 hover:bg-green-100 text-green-600 rounded-xl transition-all shadow-sm active:scale-95 disabled:opacity-50 text-sm font-bold"
                   >
                     {updatingId === payment._id ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle2 className="w-4 h-4" />}
@@ -290,7 +304,7 @@ export default function PaymentsTable({ initialPayments }: { initialPayments: Pa
                   </button>
                   <button
                     disabled={!!updatingId}
-                    onClick={() => handleStatusUpdate(payment._id, 'rejected')}
+                    onClick={(e) => { e.stopPropagation(); handleStatusUpdate(payment._id, 'rejected'); }}
                     className="flex-1 flex items-center justify-center gap-2 p-3 bg-red-50 hover:bg-red-100 text-red-600 rounded-xl transition-all shadow-sm active:scale-95 disabled:opacity-50 text-sm font-bold"
                   >
                     {updatingId === payment._id ? <Loader2 className="w-4 h-4 animate-spin" /> : <XCircle className="w-4 h-4" />}

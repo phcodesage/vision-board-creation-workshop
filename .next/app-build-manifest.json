@@ -1,43 +1,20 @@
 {
   "pages": {
-    "/_not-found/page": [
-      "static/chunks/webpack-7d18a076933a7b21.js",
-      "static/chunks/fd9d1056-0807e69ea9c303ac.js",
-      "static/chunks/117-9e252772241db564.js",
-      "static/chunks/main-app-d95e0384581a8228.js",
-      "static/chunks/app/_not-found/page-b594cd94f1ea2cd6.js"
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/page.js"
     ],
     "/layout": [
-      "static/chunks/webpack-7d18a076933a7b21.js",
-      "static/chunks/fd9d1056-0807e69ea9c303ac.js",
-      "static/chunks/117-9e252772241db564.js",
-      "static/chunks/main-app-d95e0384581a8228.js",
-      "static/css/b138c365b574f676.css",
-      "static/chunks/app/layout-a805d341fc2d622c.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/layout.css",
+      "static/chunks/app/layout.js"
     ],
     "/admin/login/page": [
-      "static/chunks/webpack-7d18a076933a7b21.js",
-      "static/chunks/fd9d1056-0807e69ea9c303ac.js",
-      "static/chunks/117-9e252772241db564.js",
-      "static/chunks/main-app-d95e0384581a8228.js",
-      "static/chunks/577-5dcac0889877e104.js",
-      "static/chunks/app/admin/login/page-61fb32745bb3725b.js"
-    ],
-    "/page": [
-      "static/chunks/webpack-7d18a076933a7b21.js",
-      "static/chunks/fd9d1056-0807e69ea9c303ac.js",
-      "static/chunks/117-9e252772241db564.js",
-      "static/chunks/main-app-d95e0384581a8228.js",
-      "static/chunks/302-bc501bf24e862386.js",
-      "static/chunks/app/page-a6de1f1e25db726d.js"
-    ],
-    "/admin/dashboard/page": [
-      "static/chunks/webpack-7d18a076933a7b21.js",
-      "static/chunks/fd9d1056-0807e69ea9c303ac.js",
-      "static/chunks/117-9e252772241db564.js",
-      "static/chunks/main-app-d95e0384581a8228.js",
-      "static/chunks/577-5dcac0889877e104.js",
-      "static/chunks/app/admin/dashboard/page-1b748a2af1f714df.js"
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/admin/login/page.js"
     ]
   }
 }
