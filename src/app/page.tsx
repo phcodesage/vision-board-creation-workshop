@@ -1,0 +1,455 @@
+"use client";
+
+import { useEffect, useState } from 'react';
+import { Calendar, Clock, Heart, Lightbulb, Users, Sparkles, Mail, Phone, MapPin, ArrowUp } from 'lucide-react';
+import Lenis from 'lenis';
+import PaymentModal, { calcCardPrice } from '@/components/PaymentModal';
+
+export default function Page() {
+  const STRIPE_PAYMENT_URL = 'https://buy.stripe.com/4gM28k8GgbAm8O51ObdfG0a';
+  const CASH_PRICE = '$129';
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 100);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      smoothWheel: true,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
+  const scrollToRegistration = () => {
+    document.getElementById('registration')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handleRegister = () => {
+    setModalOpen(true);
+  };
+
+  return (
+    <div className="min-h-screen bg-white">
+      <PaymentModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        courseName="Vision Board Creation Workshop"
+        cashPrice={CASH_PRICE}
+        cardPrice={calcCardPrice(CASH_PRICE)}
+        stripeLink={STRIPE_PAYMENT_URL}
+      />
+      <header className="relative bg-[#0e1f3e] text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-10 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#f7e0e0] rounded-full blur-3xl"></div>
+        </div>
+
+        <nav className="relative container mx-auto px-6 py-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <img src="/exceed-logo.png" alt="Exceed Learning Center" className="h-14 w-auto" />
+            </div>
+            <button
+              onClick={scrollToRegistration}
+              className="bg-[#ca3433] hover:bg-[#a82928] text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg text-lg"
+            >
+              Register Now
+            </button>
+          </div>
+        </nav>
+
+        <div className="relative container mx-auto px-6 py-20 md:py-32">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+              <div className="text-left">
+                <h1 className="text-4xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
+                  Vision Board Creation Workshop
+                </h1>
+                <p className="text-2xl md:text-4xl text-[#f7e0e0] mb-8 font-light">
+                  Dream it. See it. Create it.
+                </p>
+                <p className="text-lg md:text-2xl mb-8 text-gray-200 leading-relaxed">
+                  Join us to craft your vision board and map out your goals with clarity.
+                  Transform your dreams into a visual masterpiece that inspires action.
+                </p>
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-2">
+                  <button
+                    onClick={scrollToRegistration}
+                    className="bg-[#ca3433] hover:bg-[#a82928] text-white px-12 py-5 rounded-full text-xl font-semibold transition-all duration-300 hover:scale-105 shadow-2xl"
+                  >
+                    Register Now – $129
+                  </button>
+                  <div className="bg-white/10 backdrop-blur-sm rounded-xl px-6 py-3 border border-white/20">
+                    <span className="text-[#f7e0e0] font-bold text-2xl">$129</span>
+                    <span className="text-gray-300 text-sm block">All materials included</span>
+                  </div>
+                </div>
+              </div>
+              <div className="relative">
+                <div className="absolute -inset-4 bg-gradient-to-r from-[#ca3433] to-[#f7e0e0] rounded-2xl blur-lg opacity-30"></div>
+                <img
+                  src="/hero-img.jpg"
+                  alt="Vision Board Workshop Atmosphere"
+                  className="relative rounded-2xl shadow-2xl w-full object-cover transform hover:scale-[1.02] transition-transform duration-500"
+                />
+              </div>
+            </div>
+
+            <div className="max-w-4xl mx-auto">
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
+                <h3 className="text-2xl font-semibold mb-8 text-[#f7e0e0] text-center">Upcoming Sessions</h3>
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="bg-white/10 rounded-xl p-8 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all text-center">
+                    <Calendar className="w-10 h-10 mb-4 mx-auto text-[#f7e0e0]" />
+                    <p className="font-bold text-xl mb-3">June 7</p>
+                    <div className="flex items-center justify-center space-x-2 text-base">
+                      <Clock className="w-5 h-5" />
+                      <span>4:00–7:00 PM</span>
+                    </div>
+                  </div>
+                  <div className="bg-white/10 rounded-xl p-8 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all text-center">
+                    <Calendar className="w-10 h-10 mb-4 mx-auto text-[#f7e0e0]" />
+                    <p className="font-bold text-xl mb-3">June 14</p>
+                    <div className="flex items-center justify-center space-x-2 text-base">
+                      <Clock className="w-5 h-5" />
+                      <span>4:00–7:00 PM</span>
+                    </div>
+                  </div>
+                  <div className="bg-white/10 rounded-xl p-8 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all text-center">
+                    <Calendar className="w-10 h-10 mb-4 mx-auto text-[#f7e0e0]" />
+                    <p className="font-bold text-xl mb-3">June 21</p>
+                    <div className="flex items-center justify-center space-x-2 text-base">
+                      <Clock className="w-5 h-5" />
+                      <span>4:00–7:00 PM</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section className="py-20 bg-[#f7e0e0]">
+        <div className="container mx-auto px-6">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-4xl md:text-6xl font-bold text-[#0e1f3e] text-center mb-12">
+              What to Expect
+            </h2>
+            <p className="text-xl text-[#0e1f3e]/80 text-center mb-16 max-w-4xl mx-auto leading-relaxed">
+              Our Vision Board Creation Workshop is a guided, hands-on experience where you'll create a powerful
+              visual representation of your goals and dreams. In a supportive, creative environment, you'll learn
+              proven techniques for effective goal-setting while crafting a beautiful board that keeps you inspired.
+              All materials are provided, or feel free to bring your own special items to personalize your creation.
+            </p>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
+                <div className="w-16 h-16 bg-[#ca3433] rounded-full flex items-center justify-center mb-6 mx-auto">
+                  <Lightbulb className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#0e1f3e] mb-4 text-center">
+                  Clarify Your Goals
+                </h3>
+                <p className="text-[#0e1f3e]/70 text-center leading-relaxed text-lg">
+                  Get crystal clear on what you want to achieve through guided exercises and intentional reflection.
+                </p>
+              </div>
+
+              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
+                <div className="w-16 h-16 bg-[#ca3433] rounded-full flex items-center justify-center mb-6 mx-auto">
+                  <Heart className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#0e1f3e] mb-4 text-center">
+                  Visualize Your Dreams
+                </h3>
+                <p className="text-[#0e1f3e]/70 text-center leading-relaxed text-lg">
+                  Transform abstract goals into a tangible, inspiring visual that keeps you motivated daily.
+                </p>
+              </div>
+
+              <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
+                <div className="w-16 h-16 bg-[#ca3433] rounded-full flex items-center justify-center mb-6 mx-auto">
+                  <Users className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-[#0e1f3e] mb-4 text-center">
+                  Connect with Others
+                </h3>
+                <p className="text-[#0e1f3e]/70 text-center leading-relaxed text-lg">
+                  Share your journey with like-minded people in a supportive, encouraging community.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-4xl md:text-6xl font-bold text-[#0e1f3e] text-center mb-20">
+              Event Details
+            </h2>
+
+            <div className="space-y-8 mb-20">
+              <div className="bg-[#f7e0e0] rounded-2xl p-10 hover:shadow-lg transition-all">
+                <h3 className="text-3xl font-bold text-[#0e1f3e] mb-3">Session 1</h3>
+                <div className="flex items-center space-x-6 text-[#0e1f3e]/80 text-xl">
+                  <div className="flex items-center space-x-3">
+                    <Calendar className="w-6 h-6 text-[#ca3433]" />
+                    <span className="font-semibold">June 7</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Clock className="w-6 h-6 text-[#ca3433]" />
+                    <span>4:00–7:00 PM</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-[#f7e0e0] rounded-2xl p-10 hover:shadow-lg transition-all">
+                <h3 className="text-3xl font-bold text-[#0e1f3e] mb-3">Session 2</h3>
+                <div className="flex items-center space-x-6 text-[#0e1f3e]/80 text-xl">
+                  <div className="flex items-center space-x-3">
+                    <Calendar className="w-6 h-6 text-[#ca3433]" />
+                    <span className="font-semibold">June 14</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Clock className="w-6 h-6 text-[#ca3433]" />
+                    <span>4:00–7:00 PM</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-[#f7e0e0] rounded-2xl p-10 hover:shadow-lg transition-all">
+                <h3 className="text-3xl font-bold text-[#0e1f3e] mb-3">Session 3</h3>
+                <div className="flex items-center space-x-6 text-[#0e1f3e]/80 text-xl">
+                  <div className="flex items-center space-x-3">
+                    <Calendar className="w-6 h-6 text-[#ca3433]" />
+                    <span className="font-semibold">June 21</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Clock className="w-6 h-6 text-[#ca3433]" />
+                    <span>4:00–7:00 PM</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-br from-[#0e1f3e] to-[#0e1f3e]/90 rounded-2xl p-10 text-white">
+              <div className="flex items-start space-x-4 mb-4">
+                <MapPin className="w-8 h-8 text-[#f7e0e0] flex-shrink-0 mt-1" />
+                <div>
+                  <h4 className="font-bold text-2xl mb-2">Location</h4>
+                  <p className="text-gray-200 text-xl">In-person workshop at Creative Studio</p>
+                  <p className="text-gray-300 text-base mt-2">Full address provided upon registration</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-[#0e1f3e] text-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl md:text-6xl font-bold text-center mb-16">
+              What to Bring & What You'll Get
+            </h2>
+
+            <div className="grid md:grid-cols-2 gap-12">
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-10 border border-white/10">
+                <h3 className="text-3xl font-bold mb-8 text-[#f7e0e0]">What to Bring</h3>
+                <ul className="space-y-6">
+                  <li className="flex items-start space-x-4">
+                    <div className="w-3 h-3 bg-[#ca3433] rounded-full mt-2 flex-shrink-0"></div>
+                    <span className="text-gray-200 text-lg"><strong>Optional:</strong> Personal magazines, photos, or printed images that inspire you</span>
+                  </li>
+                  <li className="flex items-start space-x-4">
+                    <div className="w-3 h-3 bg-[#ca3433] rounded-full mt-2 flex-shrink-0"></div>
+                    <span className="text-gray-200 text-lg"><strong>Optional:</strong> Special mementos or items you'd like to include</span>
+                  </li>
+                  <li className="flex items-start space-x-4">
+                    <div className="w-3 h-3 bg-[#ca3433] rounded-full mt-2 flex-shrink-0"></div>
+                    <span className="text-gray-200 text-lg">An open mind and willingness to dream big</span>
+                  </li>
+                  <li className="flex items-start space-x-4">
+                    <div className="w-3 h-3 bg-[#ca3433] rounded-full mt-2 flex-shrink-0"></div>
+                    <span className="text-gray-200 text-lg">Comfortable clothing you don't mind getting crafty in</span>
+                  </li>
+                </ul>
+                <div className="mt-8 p-6 bg-[#ca3433]/20 rounded-xl border border-[#ca3433]/30">
+                  <p className="text-base text-[#f7e0e0]">
+                    <strong>All supplies provided:</strong> Poster boards, magazines, scissors, glue sticks, markers,
+                    decorative materials, and more!
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-10 border border-white/10">
+                <h3 className="text-3xl font-bold mb-8 text-[#f7e0e0]">What You'll Get</h3>
+                <ul className="space-y-6">
+                  <li className="flex items-start space-x-4">
+                    <div className="w-3 h-3 bg-[#ca3433] rounded-full mt-2 flex-shrink-0"></div>
+                    <span className="text-gray-200 text-lg">Your own completed vision board to take home</span>
+                  </li>
+                  <li className="flex items-start space-x-4">
+                    <div className="w-3 h-3 bg-[#ca3433] rounded-full mt-2 flex-shrink-0"></div>
+                    <span className="text-gray-200 text-lg">Goal-setting framework and planning worksheets</span>
+                  </li>
+                  <li className="flex items-start space-x-4">
+                    <div className="w-3 h-3 bg-[#ca3433] rounded-full mt-2 flex-shrink-0"></div>
+                    <span className="text-gray-200 text-lg">Step-by-step guide to manifesting your vision</span>
+                  </li>
+                  <li className="flex items-start space-x-4">
+                    <div className="w-3 h-3 bg-[#ca3433] rounded-full mt-2 flex-shrink-0"></div>
+                    <span className="text-gray-200 text-lg">Access to our supportive community group</span>
+                  </li>
+                  <li className="flex items-start space-x-4">
+                    <div className="w-3 h-3 bg-[#ca3433] rounded-full mt-2 flex-shrink-0"></div>
+                    <span className="text-gray-200 text-lg">Light refreshments and snacks throughout the session</span>
+                  </li>
+                  <li className="flex items-start space-x-4">
+                    <div className="w-3 h-3 bg-[#ca3433] rounded-full mt-2 flex-shrink-0"></div>
+                    <span className="text-gray-200 text-lg">Renewed motivation and clarity about your future</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="registration" className="py-20 bg-gradient-to-br from-[#0e1f3e] to-[#ca3433] text-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-3xl mx-auto text-center">
+            <Sparkles className="w-20 h-20 mx-auto mb-8 text-[#f7e0e0]" />
+            <h2 className="text-4xl md:text-6xl font-bold mb-8">
+              Ready to Create Your Vision?
+            </h2>
+            <p className="text-2xl mb-12 text-gray-200 leading-relaxed">
+              Spaces are limited to ensure an intimate, focused experience.
+              Reserve your spot today and start manifesting your dreams.
+            </p>
+
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-10 mb-10 border border-white/20">
+              <h3 className="text-3xl font-bold mb-8">Registration Information</h3>
+              <div className="space-y-6 text-left max-w-2xl mx-auto">
+                <div className="flex items-start space-x-4">
+                  <Mail className="w-8 h-8 text-[#f7e0e0] flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="font-semibold mb-2 text-xl">Email</p>
+                    <a href="mailto:info@exceedlearningcenterny.com" className="text-[#f7e0e0] hover:underline text-lg">
+                      info@exceedlearningcenterny.com
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <Phone className="w-8 h-8 text-[#f7e0e0] flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="font-semibold mb-2 text-xl">Phone</p>
+                    <a href="tel:+17186831750" className="text-[#f7e0e0] hover:underline text-lg">
+                      +1 718-683-1750
+                    </a>
+                  </div>
+                </div>
+                <div className="mt-8 p-6 bg-white/10 rounded-xl">
+                  <p className="text-lg">
+                    <strong>Investment:</strong> $129 for a 3 hour experience. Including all material, Champagne and refreshments
+                  </p>
+                  <p className="text-lg mt-3">
+                    Coming soon
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <button
+              onClick={handleRegister}
+              className="bg-[#ca3433] hover:bg-[#a82928] text-white px-14 py-5 rounded-full text-xl font-semibold transition-all duration-300 hover:scale-105 shadow-2xl"
+            >
+              Register Now – $129
+            </button>
+
+            <p className="mt-8 text-base text-gray-300">
+              Questions? We're here to help! Reach out anytime.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <footer className="bg-[#0e1f3e] text-white py-12">
+        <div className="container mx-auto px-6">
+          <div className="max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-12 mb-8 items-center">
+              <div>
+                <div className="flex items-center space-x-2 mb-4">
+                  <img src="/exceed-logo.png" alt="Exceed Learning Center" className="h-10 w-auto" />
+                </div>
+                <p className="text-gray-400 text-base leading-relaxed">
+                  Empowering individuals to visualize and achieve their dreams through creative expression
+                  and intentional goal-setting.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="font-bold mb-6 text-[#f7e0e0] text-lg">Contact</h4>
+                <div className="space-y-3 text-base text-gray-400">
+                  <p className="flex items-center space-x-3">
+                    <Mail className="w-5 h-5" />
+                    <a href="mailto:info@exceedlearningcenterny.com" className="hover:text-white">
+                      info@exceedlearningcenterny.com
+                    </a>
+                  </p>
+                  <p className="flex items-center space-x-3">
+                    <Phone className="w-5 h-5" />
+                    <a href="tel:+17186831750" className="hover:text-white">
+                      +1 718-683-1750
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="border-t border-white/10 pt-8 text-center text-sm text-gray-400">
+              <p>© 2025 Vision Board Workshop. All rights reserved.</p>
+              <p className="mt-2">Creating clarity, one vision board at a time.</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      {/* Scroll to Top Button */}
+      <button
+        onClick={scrollToTop}
+        className={`fixed bottom-6 right-6 w-10 h-10 bg-[#ca3433] hover:bg-[#a82928] text-white rounded-full shadow-lg transition-all duration-300 flex items-center justify-center z-50 ${
+          showScrollTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+        }`}
+        aria-label="Scroll to top"
+      >
+        <ArrowUp className="w-5 h-5" />
+      </button>
+    </div>
+  );
+}
